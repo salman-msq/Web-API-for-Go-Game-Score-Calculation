@@ -1,0 +1,45 @@
+Endpoint: /:p1/:p2/:p3
+
+URL Path: localhost:4000/p1/p2/p3/
+
+HTTP Method: GET
+
+Description: This API endpoint calculates and returns the maximum number of draws based on the input parameters p1, p2, and p3.
+
+Input Constraints: 0 <= p1, p2, p3 <= 30
+
+Output:
+If inputs are not in range then 400 Bad Request:
+    {
+       "error": '"Invalid Point(s)"
+    }
+Else:
+    If the scores aren't consistent with any valid set of games and results: { "max_draws": -1 }
+    Else:
+         {
+            "max_draws": number of max draws (Integer)
+         }
+
+Example:
+For a request to /10/10/20:
+{
+  "max_draws": 20
+}
+
+Input: /0/0/0 Expected Output:
+
+{
+  "max_draws": 0
+}
+
+Input: /3/4/5 Expected Output:
+
+{
+  "max_draws": 6
+}
+
+Input: /3/3/3 Expected Output:
+
+{
+  "max_draws": -1
+}
